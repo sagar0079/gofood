@@ -3,7 +3,8 @@ import path from "path";
 import cors from "cors";
 import dotenv from "dotenv";
 
-dotenv.config({ path: path.resolve(__dirname, "../.env") });
+// dotenv.config({ path: path.resolve(__dirname, "../.env") });
+dotenv.config();
 
 const app = express();
 const PORT = 9000;
