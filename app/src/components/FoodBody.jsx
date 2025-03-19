@@ -1,5 +1,7 @@
 import styled from "styled-components";
-import { BASE_URL, Button } from "../App";
+import { Button } from "../App";
+
+const BASE_URL = import.meta.env.VITE_BASE;
 
 const FoodBody = ( {data} ) => {
   return (

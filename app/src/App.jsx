@@ -10,12 +10,14 @@ const App = () => {
   const [filterData, setFilterData] = useState(null);
   const [selectBtn, setSelectBtn] = useState('all');
 
+  const BASE_URL = import.meta.env.VITE_BASE;
+
   useEffect( () => {
     const fetchFoodData = async () => {
 
       setLoading(true);
       try {
-        const response = await fetch(import.meta.env.VITE_BASE);
+        const response = await fetch(BASE_URL);
   
         const foodData = await response.json();
   
