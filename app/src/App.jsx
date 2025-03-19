@@ -2,8 +2,6 @@ import { useEffect, useState } from 'react';
 import styled from 'styled-components';
 import FoodBody from './components/FoodBody';
 
-export const BASE_URL = "http://localhost:9000";
-
 const App = () => {
 
   const [data, setData] = useState(null);
@@ -17,7 +15,7 @@ const App = () => {
 
       setLoading(true);
       try {
-        const response = await fetch(BASE_URL);
+        const response = await fetch(import.meta.env.VITE_BASE);
   
         const foodData = await response.json();
   

@@ -1,11 +1,23 @@
 import express from "express";
 import path from "path";
 import cors from "cors";
+import dotenv from "dotenv";
+
+dotenv.config({ path: path.resolve(__dirname, "../.env") });
+
 const app = express();
+const PORT = 9000;
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
 
-app.use(cors());
+const corsOptions = {
+  origin: process.env.FRONT_END,
+  methods: ["GET","POST","PUT","DELETE"],
+  allowedHeaders: ["Content-Type","Authorization"],
+};
+
+app.use(cors(corsOptions));
+
 
 app.use("/images", express.static(path.join(__dirname, "../public/images")));
 
@@ -59,6 +71,6 @@ app.get("/", (req, res) => {
   res.json(foodData);
 });
 
-app.listen(9000, () => {
-  console.log("Server is running on port 9000");
+app.listen(PORT, () => {
+  console.log(`Server is running on http://localhost:${PORT}`);
 });
